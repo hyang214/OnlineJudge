@@ -32,6 +32,19 @@ public class T1099 {
 				integer += son / mother;
 				son = son % mother;
 			}
+			
+			boolean flag = true;
+			while(flag){
+				flag = false;
+				for(long j = 2; j <= Math.sqrt(son) ; j ++){
+					if(son % j == 0 && mother % j == 0){
+						son /= j;
+						mother /= j;
+						flag = true;
+						j += Math.sqrt(son);
+					}
+				}
+			}
 		}
 		
 		integer *= n;
@@ -44,12 +57,12 @@ public class T1099 {
 		boolean flag = true;
 		while(flag){
 			flag = false;
-			for(long i = 2; i <= Math.sqrt(son) ; i ++){
-				if(son % i == 0 && mother % i == 0){
-					son /= i;
-					mother /= i;
+			for(long j = 2; j <= Math.sqrt(son) ; j ++){
+				if(son % j == 0 && mother % j == 0){
+					son /= j;
+					mother /= j;
 					flag = true;
-					i += Math.sqrt(son);
+					j += Math.sqrt(son);
 				}
 			}
 		}
@@ -59,13 +72,12 @@ public class T1099 {
 		String mS = mother + "";
 		
 		if(son != 0){
-			System.out.println(getChars(iS.length()+1, ' ') + sS);
-			System.out.println(iS+" "+getChars(mS.length(), '-'));
-			System.out.println(getChars(iS.length()+1, ' ') + mS);
+			System.out.println(getChars(iS.length()+1, ' ') + son);
+			System.out.println(integer+" "+getChars(mS.length(), '-'));
+			System.out.println(getChars(iS.length()+1, ' ') + mother);
 		}else{
 			System.out.println(iS);
 		}
-			
 	}
 
 	private static String getChars(int k, char c) {
