@@ -40,18 +40,9 @@ public class T1099 {
 				son = son % mother;
 			}
 			
-			boolean flag = true;
-			while(flag){
-				flag = false;
-				for(long j = 2; j <= son ; j ++){
-					if(son % j == 0 && mother % j == 0){
-						son /= j;
-						mother /= j;
-						flag = true;
-						j += Math.sqrt(son);
-					}
-				}
-			}
+			long gcd = gcd(son, mother);
+			son /= gcd;
+			mother /= gcd;
 		}
 		
 		integer *= n;
@@ -61,22 +52,23 @@ public class T1099 {
 			son = son % mother;
 		}
 		
-		boolean flag = true;
-		while(flag){
-			flag = false;
-			for(long j = 2; j <= son ; j ++){
-				if(son % j == 0 && mother % j == 0){
-					son /= j;
-					mother /= j;
-					flag = true;
-					j += Math.sqrt(son);
-				}
-			}
-		}
+		long gcd = gcd(son, mother);
+		son /= gcd;
+		mother /= gcd;
 		
 		results[n-1][0] = integer;
 		results[n-1][1] = son;
 		results[n-1][2] = mother;
+	}
+
+	/*** the greatest common divisor ***/
+	private static long gcd(long son, long mother) {
+		long a = Math.min(son, mother);
+		long b = Math.max(son, mother);
+		
+		if( a == 0)
+			return b;
+		return gcd(a, b % a);
 	}
 
 	private static String getChars(int k, char c) {
@@ -87,6 +79,7 @@ public class T1099 {
 		return sb.toString();
 	}
 	
+	/*** specific the style of output ***/
 	private static void print(long integer, long son, long mother){
 		String iS = integer+"";
 		String sS = son + "";
@@ -100,4 +93,6 @@ public class T1099 {
 			System.out.println(iS);
 		}
 	}
+	
+	
 }
