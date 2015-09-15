@@ -14,7 +14,10 @@ public class Q100 {
     public boolean isSameTree(TreeNode p, TreeNode q) {
     	if((p == null && q != null) || (p != null && q == null))
     		return false;
-    		
+    	
+    	if(p == null && q == null)
+    		return true;
+    	
     	Stack<TreeNode> pStack = new Stack<TreeNode>();
         pStack.push(p);
         Stack<TreeNode> qStack = new Stack<TreeNode>();
