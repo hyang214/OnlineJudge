@@ -9,7 +9,6 @@ public class Poj1046 {
 	
 	public static void main(String[] args) { 
 		
-		boolean flag = false;
 		int TSS = 16;
 		ArrayList<RGB> targetSet = new ArrayList<RGB>();
 		

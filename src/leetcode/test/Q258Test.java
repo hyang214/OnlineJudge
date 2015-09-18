@@ -1,10 +1,10 @@
 package leetcode.test;
 
-import static org.junit.Assert.*;
-import leetcode.easy.Q100;
-import leetcode.easy.Q258;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import leetcode.easy.Q258;
 
 /**
  * author: Hao 

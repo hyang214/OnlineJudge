@@ -11,7 +11,6 @@ public class Poj1007 {
 		Scanner sc = new Scanner(System.in);
 		String p = sc.nextLine();
 		String ps[] = p.split(" ");
-		int n = Integer.valueOf(ps[0]);
 		int m = Integer.valueOf(ps[1]);
 		HashMap<Integer, String> map = new HashMap<Integer, String>();
 		ArrayList<Integer> list = new ArrayList<Integer>();

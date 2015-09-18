@@ -82,7 +82,6 @@ public class T1099 {
 	/*** specific the style of output ***/
 	private static void print(long integer, long son, long mother){
 		String iS = integer+"";
-		String sS = son + "";
 		String mS = mother + "";
 		
 		if(son != 0){

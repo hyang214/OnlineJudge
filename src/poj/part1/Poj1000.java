@@ -26,5 +26,6 @@ public class Poj1000 {
 	         int b = in.nextInt();
 	         System.out.println(a+b);
 		 }
+		 in.close();
 	}
 }

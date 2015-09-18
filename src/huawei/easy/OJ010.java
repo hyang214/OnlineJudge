@@ -3,7 +3,7 @@ package huawei.easy;
 import java.util.HashSet;
 import java.util.Scanner;
 
-//³ÆíÀÂë
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class OJ010 {
 	 public static void main(String[] args) {
 		 	Scanner sc = new Scanner(System.in);
@@ -15,6 +15,7 @@ public class OJ010 {
 	            weights[i] = sc.nextInt();
 	        for (int i = 0; i < N; i++)
 	            nums[i] = sc.nextInt();
+	        sc.close();
 		 	
 		 	HashSet<Integer> results = new HashSet<Integer>();
 		 	results.add(0);

@@ -3,7 +3,7 @@ package huawei.easy;
 import java.util.Arrays;
 import java.util.Scanner;
 
-//ÊäÈën¸öÕûÊı£¬Êä³öÆäÖĞ×îĞ¡µÄk¸ö
+//ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½kï¿½ï¿½
 public class OJ011 {
 	 public static void main(String[] args) {
 		 	Scanner sc = new Scanner(System.in);
@@ -13,6 +13,7 @@ public class OJ011 {
 		 	for(int i = 0 ; i < N ; i ++){
 		 		list[i] = sc.nextInt();
 		 	}
+		 	sc.close();
 		 	Arrays.sort(list);
 		 	StringBuffer sb = new StringBuffer();
 		 	for(int i = 0 ; i < k ; i ++){
