@@ -1,4 +1,4 @@
-package leetcode.easy;
+package leetcode.medium;
 
 import leetcode.util.ListNode;
 
@@ -13,11 +13,11 @@ public class Q002 {
     	int nextCarry = 0;
     	
     	if(l1 == null && l2 == null){
-    		/*** Õë¶Ô½øÎ»ºó¶à³öÒ»Î»µÄÇé¿ö ***/
+    		/*** ï¿½ï¿½Ô½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ò»Î»ï¿½ï¿½ï¿½ï¿½ï¿½ ***/
     		r = new ListNode(carry);
     	}
     	else if( (l1 == null && l2 != null) || (l2 == null && l1 != null)){
-    		/*** Õë¶ÔÎ»Êý²»Ò»ÖÂ ***/
+    		/*** ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ ***/
     		ListNode one = (l1 == null)?l2:l1;
     		int add = one.val + carry;
     		r = new ListNode(add % 10);
@@ -35,7 +35,7 @@ public class Q002 {
         	r = new ListNode(add);
         	
         	if( !(l1.next == null && l2.next == null && nextCarry == 0)){
-        		/*** Õë¶Ô½öÓÐÒ»Î»£¬ÇÒÎÞ½øÎ» ***/
+        		/*** ï¿½ï¿½Ô½ï¿½ï¿½ï¿½Ò»Î»ï¿½ï¿½ï¿½ï¿½ï¿½Þ½ï¿½Î» ***/
         		ListNode next = addTwoNumbers(l1.next, l2.next, nextCarry);
             	if(next != null)
             		r.next = next;

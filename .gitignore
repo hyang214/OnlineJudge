@@ -47,3 +47,4 @@ Temporary Items
 *.project
 *.classpath
 org.eclipse.jdt.core.prefs
+/bin/

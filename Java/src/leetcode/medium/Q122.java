@@ -1,4 +1,4 @@
-package leetcode.easy;
+package leetcode.medium;
 /**
  * author: Hao 
  * date:Sep 15, 2015
