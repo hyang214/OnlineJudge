@@ -48,3 +48,4 @@ Temporary Items
 *.classpath
 org.eclipse.jdt.core.prefs
 /bin/
+.idea/
