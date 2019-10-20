@@ -6,7 +6,5 @@ package leetcode.medium;
  * purpose: Increasing Triplet Subsequence
  */
 public class Q334 {
-    public boolean increasingTriplet(int[] nums) {
-        
-    }
+
 }
