@@ -3,7 +3,7 @@ This repository stores all the code I wrote to solve those problemes in some onl
 
 ## In Java
 
-+ 78 / 1235  problems are solved in <b>Leetcode</b>
++ 77 / 1235  problems are solved in <b>Leetcode</b>
 + A small part problems are solved in <b>Huawei</b> 
 + A small part problems are solved in <b>POJ</b> 
 
