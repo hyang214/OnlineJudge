@@ -19,7 +19,9 @@ public class Q0003Test {
     @Before
     public void init() {
         Q0003 q0003 = new Q0003();
-        function = q0003::bruteForce;
+//        function = q0003::bruteForce;
+//        function = q0003::smarter;
+        function = q0003::smarterOptimizer;
     }
 
     @Test
@@ -56,6 +58,18 @@ public class Q0003Test {
     public void test06() {
         String str = "abcdef";
         Assert.assertEquals(6, calc(function, str));
+    }
+
+    @Test
+    public void test07() {
+        String str = "dvdf";
+        Assert.assertEquals(3, calc(function, str));
+    }
+
+    @Test
+    public void test08() {
+        String str = "abba";
+        Assert.assertEquals(2, calc(function, str));
     }
 
     private int calc(Function<String, Integer> function, String str) {
