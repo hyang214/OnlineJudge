@@ -19,7 +19,8 @@ public class Q0004Test {
     @Before
     public void init() {
         Q0004 q0004 = new Q0004();
-        function = q0004::combineIntoOneArray;
+//        function = q0004::combineIntoOneArray;
+        function = q0004::compareInTwoArray;
     }
 
     @Test
@@ -27,7 +28,7 @@ public class Q0004Test {
         int[] num1 = new int[]{};
         int[] num2 = new int[]{1, 2};
         double result = function.apply(num1, num2);
-        double expect = (1 + 2) / 2;
+        double expect = (1 + 2) / 2.0;
         Assert.assertEquals( true, isEquals(result, expect));
     }
 
@@ -54,7 +55,7 @@ public class Q0004Test {
         int[] num1 = new int[]{1, 2};
         int[] num2 = new int[]{3, 4, 5, 6, 7, 8};
         double result = function.apply(num1, num2);
-        double expect = (4 + 5) / 2;
+        double expect = (4 + 5) / 2.0;
         Assert.assertEquals( true, isEquals(result, expect));
     }
 
@@ -72,7 +73,7 @@ public class Q0004Test {
         int[] num1 = new int[]{3, 4, 5, 6, 7, 8};
         int[] num2 = new int[]{1, 2};
         double result = function.apply(num1, num2);
-        double expect = (4 + 5) / 2;
+        double expect = (4 + 5) / 2.0;
         Assert.assertEquals( true, isEquals(result, expect));
     }
 
