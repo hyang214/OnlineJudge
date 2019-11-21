@@ -1,5 +1,6 @@
 package leetcode.easy;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -9,6 +10,8 @@ import java.util.concurrent.Semaphore;
  * @since 2019.11.21
  */
 public class Q1114 {
+
+    public final static CountDownLatch END = new CountDownLatch(3);
 
     public interface Q1114Interface {
 
@@ -20,6 +23,9 @@ public class Q1114 {
 
     }
 
+    /**
+     * 基于信号量的方法
+     */
     public static class SemaphoreApproach implements Q1114Interface {
 
         /** first 2 second **/
@@ -28,21 +34,17 @@ public class Q1114 {
         /** second 2 third **/
         private static Semaphore s2t = new Semaphore(0);
 
-
-        @Override
         public void first(Runnable printFirst) throws InterruptedException {
             printFirst.run();
             f2s.release(1);
         }
 
-        @Override
         public void second(Runnable printSecond) throws InterruptedException {
             f2s.acquire(1);
             printSecond.run();
             s2t.release(1);
         }
 
-        @Override
         public void third(Runnable printThird) throws InterruptedException {
             s2t.acquire(1);
             printThird.run();
@@ -50,6 +52,34 @@ public class Q1114 {
 
     }
 
+    /**
+     * 基于倒数计数的方法
+     */
+    public static class CountDownLatchApproach implements Q1114Interface {
+
+        /** first 2 second **/
+        private CountDownLatch f2s = new CountDownLatch(1);
+
+        /** second 2 third **/
+        private CountDownLatch s2t = new CountDownLatch(1);
+
+        public void first(Runnable printFirst) throws InterruptedException {
+            printFirst.run();
+            f2s.countDown();
+        }
+
+        public void second(Runnable printFirst) throws InterruptedException {
+            f2s.await();
+            printFirst.run();
+            s2t.countDown();
+        }
+
+        public void third(Runnable printFirst) throws InterruptedException {
+            s2t.await();
+            printFirst.run();
+        }
+
+    }
 
 
     public static class Print implements Runnable {
@@ -63,6 +93,7 @@ public class Q1114 {
         @Override
         public void run() {
             System.out.print(msg);
+            END.countDown();
         }
     }
 
