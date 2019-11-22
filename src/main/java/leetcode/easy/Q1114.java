@@ -121,7 +121,35 @@ public class Q1114 {
 
     }
 
-    public static class While
+    public static class WhileAndVolatile implements Q1114Interface {
+
+        /** first 2 second **/
+        private volatile boolean f2s = true;
+
+        /** second 2 third **/
+        private volatile boolean s2t = true;
+
+        public void first(Runnable printFirst) throws InterruptedException  {
+            printFirst.run();
+            f2s = false;
+        }
+
+        public void second(Runnable printFirst) throws InterruptedException {
+            while (f2s) {
+
+            }
+            printFirst.run();
+            s2t = false;
+        }
+
+        public void third(Runnable printFirst) throws InterruptedException {
+            while (s2t) {
+
+            }
+            printFirst.run();
+        }
+
+    }
 
 
     public static class Print implements Runnable {

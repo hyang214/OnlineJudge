@@ -29,7 +29,8 @@ public class Q1114Test {
     public void init() {
 //        clazz = Q1114.SemaphoreApproach.class;
 //        clazz = Q1114.CountDownLatchApproach.class;
-        clazz = Q1114.CyclicBarrierApproach.class;
+//        clazz = Q1114.CyclicBarrierApproach.class;
+        clazz = Q1114.WhileAndVolatile.class;
     }
 
     @Test
