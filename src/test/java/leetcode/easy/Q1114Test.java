@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.*;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * title:
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class Q1114Test {
 
-    private Q1114.Q1114Interface exec;
+    private Class<? extends Q1114.Q1114Interface> clazz;
 
     private static String FIRST = "first";
     private static String SECOND = "second";
@@ -26,33 +27,36 @@ public class Q1114Test {
 
     @Before
     public void init() {
-//        exec = new Q1114.SemaphoreApproach();
-        exec = new Q1114.CountDownLatchApproach();
+//        clazz = Q1114.SemaphoreApproach.class;
+//        clazz = Q1114.CountDownLatchApproach.class;
+        clazz = Q1114.CyclicBarrierApproach.class;
     }
 
     @Test
     public void test001() throws Exception {
+        Q1114.END = new CountDownLatch(3);
+        Q1114.Q1114Interface exec = clazz.newInstance();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         List<Thread> threads = Lists.newArrayList();
         threads.add(new Thread(() -> {
             try {
                 exec.first(new Q1114.Print(FIRST));
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
         threads.add(new Thread(() -> {
             try {
                 exec.second(new Q1114.Print(SECOND));
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
         threads.add(new Thread(() -> {
             try {
                 exec.third(new Q1114.Print(THIRD));
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
@@ -67,27 +71,29 @@ public class Q1114Test {
 
     @Test
     public void test002() throws Exception {
+        Q1114.END = new CountDownLatch(3);
+        Q1114.Q1114Interface exec = clazz.newInstance();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         List<Thread> threads = Lists.newArrayList();
         threads.add(new Thread(() -> {
             try {
                 exec.first(new Q1114.Print(FIRST));
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
         threads.add(new Thread(() -> {
             try {
                 exec.third(new Q1114.Print(THIRD));
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
         threads.add(new Thread(() -> {
             try {
                 exec.second(new Q1114.Print(SECOND));
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
