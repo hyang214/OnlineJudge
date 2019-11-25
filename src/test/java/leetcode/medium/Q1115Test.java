@@ -1,4 +1,4 @@
-package leetcode.easy;
+package leetcode.medium;
 
 import leetcode.util.Print;
 import org.assertj.core.util.Lists;
@@ -6,7 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -14,50 +15,40 @@ import java.util.concurrent.CountDownLatch;
  * title:
  *
  * @author Hao YANG
- * @since 2019.11.21
+ * @since 2019.11.25
  */
-public class Q1114Test {
+public class Q1115Test {
 
-    private Class<? extends Q1114.Q1114Interface> clazz;
+    private final String FOO = "foo";
 
-    private static String FIRST = "first";
-    private static String SECOND = "second";
-    private static String THIRD = "third";
+    private final String BAR = "bar";
 
-    private static String RESULT = FIRST + SECOND + THIRD;
+    private Class<? extends Q1115.Q1115interface> clazz;
 
     @Before
     public void init() {
-//        clazz = Q1114.Q1114SemaphoreApproach.class;
-        clazz = Q1114.Q1114CountDownLatchApproach.class;
-//        clazz = Q1114.Q1114CyclicBarrierApproach.class;
-//        clazz = Q1114.Q1114WhileAndVolatile.class;
+        clazz = Q1115.Q1115SemaphoreApproach.class;
     }
 
     @Test
-    public void test001() throws Exception {
-        Print.END = new CountDownLatch(3);
-        Q1114.Q1114Interface exec = clazz.newInstance();
+    public void test01() throws Exception {
+        int N = 10;
+        Q1115.n = N;
+        Print.END = new CountDownLatch(N * 2);
+        Q1115.Q1115interface exec = clazz.newInstance();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         List<Thread> threads = Lists.newArrayList();
         threads.add(new Thread(() -> {
             try {
-                exec.first(new Print(FIRST));
+                exec.foo(new Print(FOO));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
         threads.add(new Thread(() -> {
             try {
-                exec.second(new Print(SECOND));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }));
-        threads.add(new Thread(() -> {
-            try {
-                exec.third(new Print(THIRD));
+                exec.bar(new Print(BAR));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -67,34 +58,28 @@ public class Q1114Test {
         }
         Print.END.await();
         String result = Print.parseString(Print.parse(out));
-        Assert.assertEquals(RESULT, result);
+        Assert.assertEquals(expect(N), result);
     }
 
-
     @Test
-    public void test002() throws Exception {
-        Print.END = new CountDownLatch(3);
-        Q1114.Q1114Interface exec = clazz.newInstance();
+    public void test02() throws Exception {
+        int N = 100;
+        Q1115.n = N;
+        Print.END = new CountDownLatch(N * 2);
+        Q1115.Q1115interface exec = clazz.newInstance();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         List<Thread> threads = Lists.newArrayList();
         threads.add(new Thread(() -> {
             try {
-                exec.first(new Print(FIRST));
+                exec.bar(new Print(BAR));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }));
         threads.add(new Thread(() -> {
             try {
-                exec.third(new Print(THIRD));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }));
-        threads.add(new Thread(() -> {
-            try {
-                exec.second(new Print(SECOND));
+                exec.foo(new Print(FOO));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -104,7 +89,15 @@ public class Q1114Test {
         }
         Print.END.await();
         String result = Print.parseString(Print.parse(out));
-        Assert.assertEquals(RESULT, result);
+        Assert.assertEquals(expect(N), result);
+    }
+
+    private String expect(int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i ++) {
+            sb.append(FOO).append(BAR);
+        }
+        return sb.toString();
     }
 
 }

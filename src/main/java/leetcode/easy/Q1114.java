@@ -13,8 +13,6 @@ import java.util.concurrent.Semaphore;
  */
 public class Q1114 {
 
-    public static CountDownLatch END = new CountDownLatch(3);
-
     public interface Q1114Interface {
 
         void first(Runnable printFirst) throws InterruptedException ;
@@ -28,7 +26,7 @@ public class Q1114 {
     /**
      * 基于信号量的方法
      */
-    public static class SemaphoreApproach implements Q1114Interface {
+    public static class Q1114SemaphoreApproach implements Q1114Interface {
 
         /** first 2 second **/
         private static Semaphore f2s = new Semaphore(0);
@@ -57,7 +55,7 @@ public class Q1114 {
     /**
      * 基于倒数计数的方法
      */
-    public static class CountDownLatchApproach implements Q1114Interface {
+    public static class Q1114CountDownLatchApproach implements Q1114Interface {
 
         /** first 2 second **/
         private CountDownLatch f2s = new CountDownLatch(1);
@@ -83,7 +81,7 @@ public class Q1114 {
 
     }
 
-    public static class CyclicBarrierApproach implements Q1114Interface {
+    public static class Q1114CyclicBarrierApproach implements Q1114Interface {
 
         /** first 2 second **/
         private CyclicBarrier f2s = new CyclicBarrier(2);
@@ -121,7 +119,7 @@ public class Q1114 {
 
     }
 
-    public static class WhileAndVolatile implements Q1114Interface {
+    public static class Q1114WhileAndVolatile implements Q1114Interface {
 
         /** first 2 second **/
         private volatile boolean f2s = true;
@@ -149,22 +147,6 @@ public class Q1114 {
             printFirst.run();
         }
 
-    }
-
-
-    public static class Print implements Runnable {
-
-        private String msg;
-
-        public Print(String msg) {
-            this.msg = msg;
-        }
-
-        @Override
-        public void run() {
-            System.out.print(msg);
-            END.countDown();
-        }
     }
 
 }
