@@ -27,7 +27,7 @@ public class Q1116 {
         public Q1116SemaphoreApproach(int n) {
             this.n = n;
         }
-        
+
         private Semaphore sz = new Semaphore(1);
         private Semaphore se = new Semaphore(0);
         private Semaphore so = new Semaphore(0);
