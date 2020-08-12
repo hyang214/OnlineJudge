@@ -1,6 +1,5 @@
 package leetcode.medium;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 
 /**
