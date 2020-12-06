@@ -34,17 +34,20 @@ public class Q1114 {
         /** second 2 third **/
         private static Semaphore s2t = new Semaphore(0);
 
+        @Override
         public void first(Runnable printFirst) throws InterruptedException  {
             printFirst.run();
             f2s.release(1);
         }
 
+        @Override
         public void second(Runnable printSecond) throws InterruptedException  {
             f2s.acquire(1);
             printSecond.run();
             s2t.release(1);
         }
 
+        @Override
         public void third(Runnable printThird) throws InterruptedException  {
             s2t.acquire(1);
             printThird.run();
@@ -63,17 +66,20 @@ public class Q1114 {
         /** second 2 third **/
         private CountDownLatch s2t = new CountDownLatch(1);
 
+        @Override
         public void first(Runnable printFirst) throws InterruptedException  {
             printFirst.run();
             f2s.countDown();
         }
 
+        @Override
         public void second(Runnable printFirst) throws InterruptedException {
             f2s.await();
             printFirst.run();
             s2t.countDown();
         }
 
+        @Override
         public void third(Runnable printFirst) throws InterruptedException {
             s2t.await();
             printFirst.run();
@@ -89,6 +95,7 @@ public class Q1114 {
         /** second 2 third **/
         private CyclicBarrier s2t = new CyclicBarrier(2);
 
+        @Override
         public void first(Runnable printFirst) throws InterruptedException  {
             try {
                 printFirst.run();
@@ -98,6 +105,7 @@ public class Q1114 {
             }
         }
 
+        @Override
         public void second(Runnable printFirst) throws InterruptedException {
             try {
                 f2s.await();
@@ -108,6 +116,7 @@ public class Q1114 {
             }
         }
 
+        @Override
         public void third(Runnable printFirst) throws InterruptedException {
             try {
                 s2t.await();
@@ -127,11 +136,13 @@ public class Q1114 {
         /** second 2 third **/
         private volatile boolean s2t = true;
 
+        @Override
         public void first(Runnable printFirst) throws InterruptedException  {
             printFirst.run();
             f2s = false;
         }
 
+        @Override
         public void second(Runnable printFirst) throws InterruptedException {
             while (f2s) {
 
@@ -140,6 +151,7 @@ public class Q1114 {
             s2t = false;
         }
 
+        @Override
         public void third(Runnable printFirst) throws InterruptedException {
             while (s2t) {
 

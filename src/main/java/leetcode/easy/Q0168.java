@@ -1,6 +1,6 @@
 package leetcode.easy;
 
-public class Q168 {
+public class Q0168 {
 	/*** Excel Sheet Column Title ***/
 	
     public String convertToTitle(int n) {
@@ -17,5 +17,12 @@ public class Q168 {
         sb = sb.reverse();
         
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        Q0168 q0168 = new Q0168();
+        System.out.println(q0168.convertToTitle(399));
+        System.out.println(q0168.convertToTitle(1199));
+        System.out.println(q0168.convertToTitle(1111299));
     }
 }

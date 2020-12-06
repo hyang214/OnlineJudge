@@ -1,7 +1,5 @@
 package leetcode.medium;
 
-import com.fasterxml.jackson.databind.util.LinkedNode;
-import leetcode.easy.Q0001;
 import leetcode.util.ListNode;
 import org.junit.Assert;
 import org.junit.Test;
