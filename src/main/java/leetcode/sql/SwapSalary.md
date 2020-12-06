@@ -21,5 +21,5 @@ set
             when 'f' then 'm'
             else 'f'
         end
-    )
+    );
 ```
