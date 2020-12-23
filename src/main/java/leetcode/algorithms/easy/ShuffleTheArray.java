@@ -3,7 +3,7 @@ package leetcode.algorithms.easy;
 import leetcode.util.Logger;
 
 /**
- * title: Shuffle the Array
+ * title: 1470 Shuffle the Array
  *      https://leetcode.com/problems/shuffle-the-array
  *
  * @author Hao YANG
